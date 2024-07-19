@@ -117,6 +117,8 @@ proc sort data=hr_transactions1 out=hr_transactions1;
 	by empid effdate;
 run;
 
+/*order everything by empid and effdate then drag down store to all
+the ones below it */
 data hr_transactions2;
 	set hr_transactions1;
 
@@ -144,10 +146,12 @@ data hr_transactions3;
 	if not last.effdate then delete;
 
 	/*Figure out how to make empty rectypes into Loc*/
-	LOCK = temp_rectype;
-/*	if missing(rectype) then rectype = temp_rectype;*/
-/*	drop temp_rectype;*/
+	temp_rectype = 'LOC';
+	if missing(rectype) then rectype = temp_rectype;
+	drop temp_rectype;
 run;
+
+
 
 
 
