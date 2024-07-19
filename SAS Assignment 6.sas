@@ -192,18 +192,34 @@ run;
 data hr_transactions6;
 	set pay1 hr_transactions5;
 	by position effdate;
-run;
-
-data hr_transactions7;
-	set hr_transactions6;
-	by position effdate;
 
 	retain temp_rate;
+
+	/*This will reset the temp_rate for every first position
+	and it is also an example of a retain down*/
+	if first.position then call missing(temp_rate); 
+
+
+	/*If the rate xists then set the temp_rate to the rate*/
 	if not missing(rate) then temp_rate = rate;
+	/*If the rate is missing (it's a .) then set the rate to the temp_rate*/
 	if rate=. then rate=temp_rate;
 
+
+	/*Delete the rows that were from the pay1 data set
+	because we only need hr_tranmsaction data after we hav dragged pay info*/
 	if store=. then delete;
+	
+	/*Drop temp variable*/
+	drop temp_rate;
 run;
+
+
+/*Sort by position and then sort effdate descending */ 
+/*and then sort back in the original order*/
+/*retain down requires multiple data steps*/
+
+
 
 
 
