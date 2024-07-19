@@ -176,6 +176,35 @@ data hr_transactions4;
 	drop temp_first temp_last temp_position;
 run;
 
+/*------------------------ Question #3 ------------------------*/
+
+/*Sort the new hr_transactions */
+proc sort data=hr_transactions4 out=hr_transactions5;
+	by position effdate;
+run;
+
+proc sort data=pay out=pay1;
+	by position effdate;
+run;
+
+
+/*I treied doing the following two data seteps in one data step but it didn't work*/
+data hr_transactions6;
+	set pay1 hr_transactions5;
+	by position effdate;
+run;
+
+data hr_transactions7;
+	set hr_transactions6;
+	by position effdate;
+
+	retain temp_rate;
+	if not missing(rate) then temp_rate = rate;
+	if rate=. then rate=temp_rate;
+
+	if store=. then delete;
+run;
+
 
 
 
