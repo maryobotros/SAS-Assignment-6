@@ -221,7 +221,23 @@ run;
 
 
 
+/*------------------------ Question #4 ------------------------*/
+/*Using one sort and one data data step retain a new variabe called HIREDATE*/
+proc sort data=hr_transactions6 out=hr_transactions7;
+	by empid effdate;
+run;
 
+data hr_transactions8;
+	set hr_transactions7;
+	by empid effdate;
+
+	/*Retain the hiredate and also format it*/
+	format hiredate mmddyy10.;
+	retain hiredate;
+
+	/*If the rectype is hire then set the hiredate to the effdate*/
+	if rectype='HIRE' then hiredate=effdate;
+run;
 
 
 
