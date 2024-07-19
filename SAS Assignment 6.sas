@@ -240,6 +240,31 @@ data hr_transactions8;
 run;
 
 
+/*------------------------ Question #5 ------------------------*/
+/*Using one sort and one data step */
+
+/*Sort by empid and then by descending effdates so that term is the first*/
+proc sort data=hr_transactions8 out=hr_transactions9;
+	by empid descending effdate;
+run;
+
+
+data hr_transactions10;
+	set hr_transactions9;
+	by empid descending effdate;
+	
+	format termdate mmddyy10.;
+	retain termdate;
+
+	
+	if first.empid then do;
+		if rectype = 'TERM' then termdate=effdate;
+		else termdate=input("12/31/2999", mmddyy10.);
+	end;
+	
+run;
+
+
 
 
 
