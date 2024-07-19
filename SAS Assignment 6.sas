@@ -143,6 +143,7 @@ data hr_transactions3;
 	set hr_transactions2;
 	by empid effdate;
 
+	/*Remove it if it's not the last effdate*/
 	if not last.effdate then delete;
 
 	/*Figure out how to make empty rectypes into Loc*/
@@ -150,6 +151,35 @@ data hr_transactions3;
 	if missing(rectype) then rectype = temp_rectype;
 	drop temp_rectype;
 run;
+
+
+/*For each empid and effdate(needed because posoiton can change with effdate)
+drag down the first, last, position*/
+data hr_transactions4;
+	set hr_transactions3;
+	by empid effdate;
+	
+	/*Retain first, last, and position to drag them down*/
+	retain temp_first temp_last temp_position;
+
+	/*Replace missing first last and position with dragged down temps*/
+	if not missing(first)then temp_first = first;
+	if missing(first) then first = temp_first;
+
+	if not missing(last) then temp_last = last;
+	if missing(last) then last = temp_last;
+
+	if not missing(position) then temp_position = position;
+	if missing(position) then position = temp_position;
+
+	/*Drop all temp variables*/
+	drop temp_first temp_last temp_position;
+run;
+
+
+
+
+
 
 
 
