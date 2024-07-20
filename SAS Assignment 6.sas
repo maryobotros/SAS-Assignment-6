@@ -231,7 +231,7 @@ data hr_transactions8;
 	set hr_transactions7;
 	by empid effdate;
 
-	/*Retain the hiredate and also format it*/
+	/*Retain the hiredate and format it*/
 	format hiredate mmddyy10.;
 	retain hiredate;
 
@@ -241,7 +241,7 @@ run;
 
 
 /*------------------------ Question #5 ------------------------*/
-/*Using one sort and one data step */
+/*Using one sort and one data step add a termdate for the emplyees*/
 
 /*Sort by empid and then by descending effdates so that term is the first*/
 proc sort data=hr_transactions8 out=hr_transactions9;
@@ -253,16 +253,41 @@ data hr_transactions10;
 	set hr_transactions9;
 	by empid descending effdate;
 	
+	/*Retain the termdate and format it*/
 	format termdate mmddyy10.;
 	retain termdate;
 
-	
+	/*If the first record type is a termination then set the termdate to effdate.
+	otherwise, set the termdate to 12/31/2999*/
 	if first.empid then do;
 		if rectype = 'TERM' then termdate=effdate;
 		else termdate=input("12/31/2999", mmddyy10.);
 	end;
 	
 run;
+
+/*Reset the order so that they are sorted by each emplyee and then effdate*/
+proc sort data=hr_transactions10 out=hr_transactions11;
+	by empid effdate;
+run;
+
+
+/*------------------------ Question #6 ------------------------*/
+/*The attorney wants to get an employee head count on monthly basis for each month
+during the 2001 to 2008 class period. 
+*/
+
+data numyears;
+	do i = mdy(1,1,2001) to mdy(12,31,2008) by 1
+		date;
+
+		output;
+		
+	end;
+run;
+
+
+data month
 
 
 
