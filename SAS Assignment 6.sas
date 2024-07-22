@@ -362,9 +362,6 @@ run;
 
 
 
-
-
-
 /*This code just outputs the total number of employees*/	
 data num_of_employees;
 	set hr_transactions15;
