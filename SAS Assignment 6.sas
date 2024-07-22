@@ -361,7 +361,7 @@ data month_end_incumbent2;
 run;
 
 /*Keeping each month which should output 96 results*/
-data nonth_end_incumbent3;
+data month_end_incumbent3;
 	set month_end_incumbent2;
 	by month_active;
 	
@@ -370,6 +370,53 @@ data nonth_end_incumbent3;
 
 	/*Keep only th emonth and number of employees*/
 	keep month_active total_employees;
+run;
+
+
+
+/*------------------------ Question #7 ------------------------*/
+/*Create a monthly summary file that includes head counts for each job title
+Should have 5 variables: MONTH SERVERS KITCHEN LOCATIONMGR ASSTMGR
+and should have 8 years worth of records */
+
+/*Create counters for each position and increment them each line using
+month_end_incumbent2*/
+data month_end_incumbent4;
+	set month_end_incumbent2;
+	by month_active;
+
+	/*Retain each of these variables for each month_active*/
+	retain total_employeess servers kiitchen locationmgr asstmgr;
+
+	/*Reset each of the variables for each new month_active*/
+	if first.month_active then do;
+		total_employees = 0;
+		servers = 0;
+		kitchen = 0;
+		locationmgr = 0;
+		asstmgr = 0;
+	end;
+
+	/*Incrementing each of the variables if they are a current employee for
+	the month_active and are the position*/
+	if current = 1 then total_employees + 1;
+	if current = 1 and position = 'SERVER' then servers + 1;
+	if current = 1 and position = 'KITCHEN' then kitchen + 1;
+	if current = 1 and position = 'LOCATION MGR' then locationmgr + 1;
+	if current = 1 and position = 'ASST MGR' then asstmgr + 1;
+run;
+
+
+/*Clean the data*/
+data month_end_incumbent5;
+	set month_end_incumbent4;
+	by month_active;
+
+	/*Keep the last of each month_active*/
+	if not last.month_active then delete;
+
+	/*Keep only th enecessary variables*/
+	keep month_active total_employees servers kitchen locationmgr asstmgr;
 run;
 
 
@@ -385,6 +432,11 @@ run;
 
 
 
+
+
+
+
+/*------------------------ Beyond this point is just notes ------------------------*/
 /*This code just outputs the total number of employees*/	
 data num_of_employees;
 	set hr_transactions15;
