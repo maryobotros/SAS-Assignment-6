@@ -339,7 +339,8 @@ data month_end_incumbent;
 	end;
 run;
 
-/*Group by month-active*/
+
+/*Group by month_active*/
 proc sort data=month_end_incumbent out=month_end_incumbent1;
 	by month_active;
 run;
@@ -358,6 +359,28 @@ data month_end_incumbent2;
 	/*This increments total_employees when the flag is read*/
 	if current = 1 then total_employees + 1;
 run;
+
+/*Keeping each month which should output 96 results*/
+data nonth_end_incumbent3;
+	set month_end_incumbent2;
+	by month_active;
+	
+	/*Keep the last of each month_active*/
+	if not last.month_active then delete;
+
+	/*Keep only th emonth and number of employees*/
+	keep month_active total_employees;
+run;
+
+
+
+
+
+
+
+
+
+
 
 
 
