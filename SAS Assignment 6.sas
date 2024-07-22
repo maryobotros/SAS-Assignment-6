@@ -329,23 +329,6 @@ data month_end_incumbent;
 	set hr_transactions15;
 	by empid;
 
-	retain month_active;
-	format month_active mmddyy10. current best12.;
-
-	if first.empid then do i=0 to 95;
-		month_active = intnx('month', '31JAN2001'd,i,'same');
-
-		if month_active >= hiredate and month_active <= termdate then
-			current = 1;
-		else current = 0;
-		output;
-	end;
-run;
-
-data month_end_incumbent;
-	set hr_transactions15;
-	by empid;
-
 	format month_active mmddyy10.;
 
 	if first.empid then do i=0 to 95;
@@ -354,6 +337,26 @@ data month_end_incumbent;
 		else current = 0; 
 		output; /*This is what actually creates each of the new records*/
 	end;
+run;
+
+/*Group by month-active*/
+proc sort data=month_end_incumbent out=month_end_incumbent1;
+	by month_active;
+run;
+
+data month_end_incumbent2;
+	set month_end_incumbent1;
+	by month_active;
+
+	/*This will retain the total_emplyees variable for each month_active*/
+	retain total_employees;
+
+	/*This resets for each new month_active*/
+	if first.month_active then total_employees = 0;
+	
+
+	/*This increments total_employees when the flag is read*/
+	if current = 1 then total_employees + 1;
 run;
 
 
