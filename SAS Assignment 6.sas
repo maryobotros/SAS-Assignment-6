@@ -260,7 +260,7 @@ data hr_transactions10;
 	/*If the first record type is a termination then set the termdate to effdate.
 	otherwise, set the termdate to 12/31/2999*/
 	if first.empid then do;
-		if rectype = 'TERM' then termdate=effdate;
+		if rectype = 'TERM' then termdate = effdate;
 		else termdate=input("12/31/2999", mmddyy10.);
 	end;
 	
@@ -277,14 +277,72 @@ run;
 during the 2001 to 2008 class period. 
 */
 
-data numyears;
-	do i = mdy(1,1,2001) to mdy(12,31,2008) by 1
-		date;
+/*First create a promotion date for all employees*/
 
-		output;
-		
+/*Create a flag to detect if the empid has a promotion*/
+data hr_transactions12;
+	set hr_transactions11;
+	by empid;
+	
+	/*Reatain the temporary promotion date*/
+	retain temp_promodate;
+
+	/*If they do have a promotion then set the flag to hello*/
+	if rectype = 'POS' then temp_promodate = 'hello';
+	else temp_promodate = .;
+
+run;
+
+/*Sort to get the prodate first for each empid (descending makes temp_promodate first)*/
+proc sort data=hr_transactions12 out=hr_transactions13;
+	by empid descending temp_promodate;
+run;
+
+/*Create a permenant promotion date that will be set for all records for the empid*/
+data hr_transactions14;
+	set hr_transactions13;
+	by empid descending temp_promodate;
+
+	format promodate mmddyy10.;
+	retain promodate;
+
+	
+	if first.empid then do;
+		if temp_promodate='hello' then promodate=effdate;
+		if temp_promodate ne"hello" then promodate=.;
+	end;
+
+	/*Remove the temp promotion date variable*/
+	drop temp_promodate;
+run;
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Making a data set that loops through years 2001 to 2008 and all months in those years*/
+data want;
+	do year = 2001 to 2008;
+		do month = 1 to 12;
+			date = mdy(month, 1, year);
+			format date mmddyy10.;
+			output;
+		end;
 	end;
 run;
+
+
 
 
 data month
