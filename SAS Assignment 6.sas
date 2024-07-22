@@ -315,17 +315,68 @@ data hr_transactions14;
 	/*Remove the temp promotion date variable*/
 	drop temp_promodate;
 run;
+
+/*Reorder so that's by empid and effdate*/
+proc sort data=hr_transactions14 out=hr_transactions15;
+	by empid effdate;
+run;
+
+
+/*Go through each empid and expand it with each month between 2001 and 2008
+Since there are 21 employees and 96 months, there weill be a total of 2016
+results produced in this data set.*/
+data month_end_incumbent;
+	set hr_transactions15;
+	by empid;
+
+	retain month_active;
+	format month_active mmddyy10. current best12.;
+
+	if first.empid then do i=0 to 95;
+		month_active = intnx('month', '31JAN2001'd,i,'same');
+
+		if month_active >= hiredate and month_active <= termdate then
+			current = 1;
+		else current = 0;
+		output;
+	end;
+run;
+
+data month_end_incumbent;
+	set hr_transactions15;
+	by empid;
+
+	format month_active mmddyy10.;
+
+	if first.empid then do i=0 to 95;
+		month_active = intnx('month', '31JAN2001'd,i,'same');
+		if month_active >= hiredate and month_active <= termdate then current = 1;
+		else current = 0; 
+		output; /*This is what actually creates each of the new records*/
+	end;
+run;
+
+
+
+
+
+
+
+/*This code just outputs the total number of employees*/	
+data num_of_employees;
+	set hr_transactions15;
+	by empid;
+
 	
+	retain total_employees 0;
 
+	if first.empid then employee_number = 1;
+	else employee_number = 0;
 
+	if employee_number = 1 then total_employees + 1;
+run;
 
-
-
-
-
-
-
-
+proc freq data=hr_transactions15;
 
 
 
@@ -341,11 +392,6 @@ data want;
 		end;
 	end;
 run;
-
-
-
-
-data month
 
 
 
