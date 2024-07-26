@@ -188,7 +188,7 @@ proc sort data=pay out=pay1;
 run;
 
 
-/*I treied doing the following two data seteps in one data step but it didn't work*/
+/*I tried doing the following two data seteps in one data step but it didn't work*/
 data hr_transactions6;
 	set pay1 hr_transactions5;
 	by position effdate;
@@ -200,7 +200,7 @@ data hr_transactions6;
 	if first.position then call missing(temp_rate); 
 
 
-	/*If the rate xists then set the temp_rate to the rate*/
+	/*If the rate exists then set the temp_rate to the rate*/
 	if not missing(rate) then temp_rate = rate;
 	/*If the rate is missing (it's a .) then set the rate to the temp_rate*/
 	if rate=. then rate=temp_rate;
@@ -285,31 +285,31 @@ data hr_transactions12;
 	by empid;
 	
 	/*Reatain the temporary promotion date*/
-	retain temp_promodate;
+	retain temp_promotion;
 
 	/*If they do have a promotion then set the flag to hello*/
-	if rectype = 'POS' then temp_promodate = 'hello';
-	else temp_promodate = .;
+	if rectype = 'POS' then temp_promotion = 1;
+	else temp_promotion = 0;
 
 run;
 
 /*Sort to get the prodate first for each empid (descending makes temp_promodate first)*/
 proc sort data=hr_transactions12 out=hr_transactions13;
-	by empid descending temp_promodate;
+	by empid descending temp_promotion;
 run;
 
 /*Create a permenant promotion date that will be set for all records for the empid*/
 data hr_transactions14;
 	set hr_transactions13;
-	by empid descending temp_promodate;
+	by empid descending temp_promotion;
 
 	format promodate mmddyy10.;
 	retain promodate;
 
 	
 	if first.empid then do;
-		if temp_promodate='hello' then promodate=effdate;
-		if temp_promodate ne"hello" then promodate=.;
+		if temp_promotion=1 then promodate=effdate;
+		if temp_promotion=0 then promodate=.;
 	end;
 
 	/*Remove the temp promotion date variable*/
@@ -323,10 +323,10 @@ run;
 
 
 /*Go through each empid and expand it with each month between 2001 and 2008
-Since there are 21 employees and 96 months, there weill be a total of 2016
+Since there are 21 employees and 96 months, there will be a total of 2016
 results produced in this data set.*/
 data month_end_incumbent;
-	set hr_transactions15;
+	set hr_transactions14;
 	by empid;
 
 	format month_active mmddyy10.;
@@ -337,6 +337,13 @@ data month_end_incumbent;
 		else current = 0; 
 		output; /*This is what actually creates each of the new records*/
 	end;
+run;
+
+/*Debugging*/
+data month_end_incumbent_te;
+	set month_end_incumbent;
+
+	if empid='Z565332';
 run;
 
 
@@ -359,6 +366,21 @@ data month_end_incumbent2;
 	/*This increments total_employees when the flag is read*/
 	if current = 1 then total_employees + 1;
 run;
+
+
+
+/*Debugging to find what happens with promotion*/
+proc sort data=month_end_incumbent2 out=temp_data;
+	by empid;
+run;
+
+data temp_data1;
+	set temp_data;
+	if first = 'JAMIE';
+run;
+	
+
+
 
 /*Keeping each month which should output 96 results*/
 data month_end_incumbent3;
