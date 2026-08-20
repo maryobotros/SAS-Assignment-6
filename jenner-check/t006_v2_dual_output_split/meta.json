@@ -1,0 +1,7 @@
+{
+  "bundle": "t006_v2_dual_output_split",
+  "source_file": "SAS Assignment 6-V2.sas",
+  "source_blob_sha": "e31239c3c68700ee634bc94d1310e9ed38330a15",
+  "source_commit": "2d04f8e590341f4a9789ea4cc0a8456bafb0afda",
+  "notes": "Question #2 from the V2 pass at the same assignment: stack hr_transactions with location_data, retain temp_store cleared per empid (if first.empid then temp_store = .;), then split into TWO output datasets in one DATA step (OUTPUT hr_transactions3 / OUTPUT hr_transactions3_delete based on last.effdate) -- a dual-output technique the original SAS Assignment 6.sas doesn't use. INFILE was switched from the original absolute path to INFILE DATALINES with rows taken verbatim from the repo's own Munchies - HR Transactions.csv and Munchies - Location Data.csv (one employee, Z294605, who changed store location partway through). All retain/first.empid/dual-output/RECTYPE-recode logic is unmodified from the source."
+}

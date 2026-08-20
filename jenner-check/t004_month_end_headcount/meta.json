@@ -1,0 +1,7 @@
+{
+  "bundle": "t004_month_end_headcount",
+  "source_file": "SAS Assignment 6.sas",
+  "source_blob_sha": "0ef7442d87ec3a897b125719e658dbaa2117490a",
+  "source_commit": "2d04f8e590341f4a9789ea4cc0a8456bafb0afda",
+  "notes": "Question #6: expand each employee into one row per active month (do i=0 to N; month_active=intnx('month', anchor, i, 'same'); output; end;) then tally a monthly headcount via a sort + retain(total_employees) + first.month_active reset. hr_transactions14 (the Questions #1-5 output) is stood in with two employees: one hired Jan 2001 and still active (termdate 12/31/2999), one hired Jan 2001 and terminated June 2001, covering both the current=1 and current=0 branches. The DO-loop bound was reduced from 95 (96 months across 2001-2008) to 11 (12 months, 2001 only) to keep the bundle's output small; the loop mechanics, INTNX usage, and the tally/collapse logic are otherwise unmodified from the source."
+}

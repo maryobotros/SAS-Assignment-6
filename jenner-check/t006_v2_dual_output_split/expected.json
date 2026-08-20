@@ -1,0 +1,15 @@
+{
+  "_captured_at": "2026-08-20T10:37:00Z",
+  "_captured_run_id": "r_c3c5a6b47ea84bb0847f43f1b78f0ad8",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote hr_transactions3 (3 rows, 7 columns).",
+    "NOTE: Wrote hr_transactions3_delete (1 rows, 7 columns).",
+    "NOTE: Wrote hr_transactions4 (3 rows, 7 columns).",
+    "NOTE: PROC PRINT completed: 3 observations printed, 7 variables",
+    "NOTE: PROC PRINT completed: 1 observations printed, 7 variables"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

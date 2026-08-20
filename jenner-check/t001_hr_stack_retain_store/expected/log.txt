@@ -1,0 +1,54 @@
+NOTE: Option OBS changed to 100.
+NOTE: DATA hr_transactions
+
+NOTE: Processing inline DATALINES (15 lines)
+
+NOTE: Read 15 rows from DATALINES.
+NOTE: Wrote hr_transactions (15 rows, 6 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA location_data
+
+NOTE: Processing inline DATALINES (10 lines)
+
+NOTE: Read 10 rows from DATALINES.
+NOTE: Wrote location_data (10 rows, 3 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=hr_transactions
+
+NOTE: Read 15 rows from hr_transactions.
+NOTE: Wrote hr_transactions (15 rows, 6 columns).
+NOTE: PROC SORT statement used.
+NOTE: PROC SORT data=location_data
+
+NOTE: Read 10 rows from location_data.
+NOTE: Wrote location_data (10 rows, 3 columns).
+NOTE: PROC SORT statement used.
+NOTE: DATA hr_transactions1
+
+
+NOTE: Read 10 rows from location_data.
+NOTE: Read 15 rows from hr_transactions.
+NOTE: Wrote hr_transactions1 (25 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=hr_transactions1
+
+NOTE: Read 25 rows from hr_transactions1.
+NOTE: Wrote hr_transactions1 (25 rows, 7 columns).
+NOTE: PROC SORT statement used.
+NOTE: DATA hr_transactions2
+
+
+NOTE: Read 25 rows from hr_transactions1.
+NOTE: Wrote hr_transactions2 (25 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=hr_transactions2
+
+NOTE: PROC PRINT completed: 25 observations printed, 7 variables

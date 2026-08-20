@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_proc_sql_create_table",
+  "source_file": "SAS Assignment 6.sas",
+  "source_blob_sha": "0ef7442d87ec3a897b125719e658dbaa2117490a",
+  "source_commit": "2d04f8e590341f4a9789ea4cc0a8456bafb0afda",
+  "notes": "The 'SQL practice' section at the end of the script: two PROC SQL CREATE TABLE ... AS SELECT * FROM steps against hr_transactions and location_data. INFILE was switched from the original absolute paths to INFILE DATALINES with rows taken verbatim from the repo's own Munchies - HR Transactions.csv and Munchies - Location Data.csv; the two PROC SQL statements are unmodified from the source."
+}

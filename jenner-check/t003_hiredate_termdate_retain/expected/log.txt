@@ -1,0 +1,44 @@
+NOTE: Option OBS changed to 100.
+NOTE: DATA hr_transactions7
+
+NOTE: Processing inline DATALINES (4 lines)
+
+NOTE: Read 4 rows from DATALINES.
+NOTE: Wrote hr_transactions7 (4 rows, 3 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=hr_transactions7
+
+NOTE: Read 4 rows from hr_transactions7.
+NOTE: Wrote hr_transactions7 (4 rows, 3 columns).
+NOTE: PROC SORT statement used.
+NOTE: DATA hr_transactions8
+
+
+NOTE: Read 4 rows from hr_transactions7.
+NOTE: Wrote hr_transactions8 (4 rows, 4 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=hr_transactions8
+
+NOTE: Read 4 rows from hr_transactions8.
+NOTE: Wrote hr_transactions9 (4 rows, 4 columns).
+NOTE: PROC SORT statement used.
+NOTE: DATA hr_transactions10
+
+
+NOTE: Read 4 rows from hr_transactions9.
+NOTE: Wrote hr_transactions10 (4 rows, 5 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=hr_transactions10
+
+NOTE: Read 4 rows from hr_transactions10.
+NOTE: Wrote hr_transactions11 (4 rows, 5 columns).
+NOTE: PROC SORT statement used.
+NOTE: PROC PRINT data=hr_transactions11
+
+NOTE: PROC PRINT completed: 4 observations printed, 5 variables

@@ -1,0 +1,75 @@
+NOTE: Option OBS changed to 100.
+NOTE: DATA hr_transactions
+
+NOTE: Processing inline DATALINES (2 lines)
+
+NOTE: Read 2 rows from DATALINES.
+NOTE: Wrote hr_transactions (2 rows, 6 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA location_data
+
+NOTE: Processing inline DATALINES (2 lines)
+
+NOTE: Read 2 rows from DATALINES.
+NOTE: Wrote location_data (2 rows, 3 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=hr_transactions
+
+NOTE: Read 2 rows from hr_transactions.
+NOTE: Wrote hr_transactions1 (2 rows, 6 columns).
+NOTE: PROC SORT statement used.
+NOTE: PROC SORT data=location_data
+
+NOTE: Read 2 rows from location_data.
+NOTE: Wrote location_data1 (2 rows, 3 columns).
+NOTE: PROC SORT statement used.
+NOTE: DATA hr_transactions1
+
+
+NOTE: Read 2 rows from location_data1.
+NOTE: Read 2 rows from hr_transactions1.
+NOTE: Wrote hr_transactions1 (4 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SORT data=hr_transactions1
+
+NOTE: Read 4 rows from hr_transactions1.
+NOTE: Wrote hr_transactions1 (4 rows, 7 columns).
+NOTE: PROC SORT statement used.
+NOTE: DATA hr_transactions2
+
+
+NOTE: Read 4 rows from hr_transactions1.
+NOTE: Wrote hr_transactions2 (4 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA hr_transactions3 hr_transactions3_delete
+
+NOTE: Multi-output DATA step splits stream into: hr_transactions3 hr_transactions3_delete
+
+NOTE: Read 4 rows from hr_transactions2.
+NOTE: Wrote hr_transactions3 (3 rows, 7 columns).
+NOTE: Wrote hr_transactions3_delete (1 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA hr_transactions4
+
+
+NOTE: Read 3 rows from hr_transactions3.
+NOTE: Wrote hr_transactions4 (3 rows, 7 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=hr_transactions4
+
+NOTE: PROC PRINT completed: 3 observations printed, 7 variables
+NOTE: PROC PRINT data=hr_transactions3_delete
+
+NOTE: PROC PRINT completed: 1 observations printed, 7 variables

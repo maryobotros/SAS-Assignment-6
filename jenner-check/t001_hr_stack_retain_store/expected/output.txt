@@ -1,0 +1,27 @@
+
+  Obs                 empid  store     effdate                 first                  last               rectype              position
+    1  Z304857                   1  03/05/2001
+    2  Z304857                   1  03/05/2001  PHIL                  JOHNSON               HIRE                  SERVER
+    3  Z304857                   1  06/06/2006  PHIL                  JOHNSON               TERM                  SERVER
+    4  Z342381                   1  08/17/2000
+    5  Z342381                   1  08/17/2000  TOM                   BLAKE                 HIRE                  KITCHEN
+    6  Z342381                   3  08/01/2001
+    7  Z342381                   3  05/04/2002  TOM                   BLAKE                 TERM                  KITCHEN
+    8  Z507208                   1  02/06/2004
+    9  Z507208                   1  02/06/2004  AARON                 WOOD                  HIRE                  SERVER
+   10  Z529415                   1  04/15/2001
+   11  Z529415                   1  04/15/2001  PETE                  JACKSON               HIRE                  SERVER
+   12  Z565332                   1  12/18/2004
+   13  Z565332                   1  12/18/2004  VICTOR                DAVIS                 HIRE                  SERVER
+   14  Z565332                   1  05/15/2005  VICTOR                DAVIS                 POS                   LOCATION MGR
+   15  Z565332                   1  07/06/2006  VICTOR                DAVIS                 TERM                  LOCATION MGR
+   16  Z831654                   1  05/17/2003
+   17  Z831654                   1  05/17/2003  SUE                   ANDOVER               HIRE                  KITCHEN
+   18  Z863957                   1  08/15/2004
+   19  Z863957                   1  08/15/2004  JAMIE                 BLANK                 HIRE                  SERVER
+   20  Z863957                   1  08/27/2005  JAMIE                 BLANK                 POS                   ASST MGR
+   21  Z888277                   1  09/22/2006
+   22  Z888277                   1  09/22/2006  JACK                  SIMMONS               HIRE                  SERVER
+   23  Z980987                   1  06/19/2004
+   24  Z980987                   1  06/19/2004  LAURIE                ALEXANDER             HIRE                  KITCHEN
+   25  Z980987                   1  06/23/2005  LAURIE                ALEXANDER             POS                   SERVER

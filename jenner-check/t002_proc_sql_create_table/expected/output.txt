@@ -1,0 +1,13 @@
+
+  Obs                 empid                 first                  last               rectype     effdate              position
+    1  Z507208               AARON                 WOOD                  HIRE                  02/06/2004  SERVER
+    2  Z304857               PHIL                  JOHNSON               HIRE                  03/05/2001  SERVER
+    3  Z304857               PHIL                  JOHNSON               TERM                  06/06/2006  SERVER
+    4  Z529415               PETE                  JACKSON               HIRE                  04/15/2001  SERVER
+    5  Z888277               JACK                  SIMMONS               HIRE                  09/22/2006  SERVER
+
+  Obs                 empid  store     effdate
+    1  Z507208                   1  02/06/2004
+    2  Z304857                   1  03/05/2001
+    3  Z529415                   1  04/15/2001
+    4  Z888277                   1  09/22/2006

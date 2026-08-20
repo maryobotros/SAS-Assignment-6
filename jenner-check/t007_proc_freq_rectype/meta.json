@@ -1,0 +1,7 @@
+{
+  "bundle": "t007_proc_freq_rectype",
+  "source_file": "Assignment 6 scratch.sas",
+  "source_blob_sha": "e1860b032ac6bc90fdaf7e0168c4b52ff56cc5a2",
+  "source_commit": "2d04f8e590341f4a9789ea4cc0a8456bafb0afda",
+  "notes": "Question #1's PROC FREQ TABLE rectype; tabulation, plus the ingestion DATA step it runs against. INFILE was switched from the original absolute path to INFILE DATALINES with 15 rows taken verbatim from the repo's own Munchies - HR Transactions.csv (covering HIRE, TERM, and POS record types). The format/informat block and the PROC FREQ statement are unmodified from the source."
+}
