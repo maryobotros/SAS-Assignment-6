@@ -1,0 +1,33 @@
+NOTE: Option OBS changed to 100.
+NOTE: DATA hr_transactions
+
+NOTE: Processing inline DATALINES (5 lines)
+
+NOTE: Read 5 rows from DATALINES.
+NOTE: Wrote hr_transactions (5 rows, 6 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA location_data
+
+NOTE: Processing inline DATALINES (4 lines)
+
+NOTE: Read 4 rows from DATALINES.
+NOTE: Wrote location_data (4 rows, 3 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC SQL 
+
+NOTE: Table hr_transactions_sql created.
+NOTE: PROC SQL statement used.
+NOTE: PROC SQL 
+
+NOTE: Table location_data_sql created.
+NOTE: PROC SQL statement used.
+NOTE: PROC PRINT data=hr_transactions_sql
+
+NOTE: PROC PRINT completed: 5 observations printed, 6 variables
+NOTE: PROC PRINT data=location_data_sql
+
+NOTE: PROC PRINT completed: 4 observations printed, 3 variables

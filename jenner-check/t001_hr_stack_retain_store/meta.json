@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_hr_stack_retain_store",
+  "source_file": "SAS Assignment 6.sas",
+  "source_blob_sha": "0ef7442d87ec3a897b125719e658dbaa2117490a",
+  "source_commit": "2d04f8e590341f4a9789ea4cc0a8456bafb0afda",
+  "notes": "Question #1 (comma-delimited infile ingestion with format/informat blocks) plus Question #2 (stack hr_transactions with location_data, sort, and drag a missing STORE value down via a retained prev_store variable). INFILE was switched from the original absolute /mount/resdata/... path to INFILE DATALINES carrying a sample of rows taken verbatim from the repo's own Munchies - HR Transactions.csv and Munchies - Location Data.csv (same dlm=',' dsd ingestion options); all downstream DATA/PROC SORT logic is unmodified."
+}

@@ -1,0 +1,7 @@
+{
+  "bundle": "t005_monthly_position_headcount",
+  "source_file": "SAS Assignment 6.sas",
+  "source_blob_sha": "0ef7442d87ec3a897b125719e658dbaa2117490a",
+  "source_commit": "2d04f8e590341f4a9789ea4cc0a8456bafb0afda",
+  "notes": "Question #7: monthly headcount broken out by job title (SERVERS/KITCHEN/LOCATIONMGR/ASSTMGR), retaining four counters that reset on first.month_active and increment per current=1 row matching each POSITION. month_end_incumbent2 (the Question #6 output) is stood in with a small hand-built sample: 3 positions active in Jan 2001, with the KITCHEN employee dropping to current=0 in Feb 2001, exercising the reset-then-increment logic across two BY-groups. The retain/reset/increment DATA step and the final keep/last.month_active collapse are unmodified from the source."
+}

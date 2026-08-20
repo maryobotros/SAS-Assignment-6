@@ -1,0 +1,13 @@
+{
+  "_captured_at": "2026-08-20T10:30:00Z",
+  "_captured_run_id": "r_de492232ed07440fac986b55f61b886a",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote month_end_incumbent (24 rows, 7 columns).",
+    "NOTE: Wrote month_end_incumbent3 (12 rows, 2 columns).",
+    "NOTE: PROC PRINT completed: 12 observations printed, 2 variables"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

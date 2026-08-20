@@ -1,0 +1,7 @@
+{
+  "bundle": "t003_hiredate_termdate_retain",
+  "source_file": "SAS Assignment 6.sas",
+  "source_blob_sha": "0ef7442d87ec3a897b125719e658dbaa2117490a",
+  "source_commit": "2d04f8e590341f4a9789ea4cc0a8456bafb0afda",
+  "notes": "Question #4 (retain HIREDATE per empid, ascending sort) and Question #5 (retain TERMDATE per empid using a descending-effdate sort, defaulting to 12/31/2999 for employees never terminated). hr_transactions7 (the Questions #1-3 output) is stood in with a small hand-built sample: one employee hired then terminated (Z304857), one hired then promoted but never terminated (Z980987), covering both branches of the Question #5 logic. All PROC SORTs and both retain/format DATA steps are unmodified from the source."
+}

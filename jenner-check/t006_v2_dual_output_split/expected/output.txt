@@ -1,0 +1,8 @@
+
+  Obs                 empid  store     effdate                 first                  last               rectype              position
+    1  Z294605                   1  11/05/2003  DAVID                 PERKINS               HIRE                  SERVER
+    2  Z294605                   4  01/03/2004                                              LOC
+    3  Z294605                   4  06/10/2005  DAVID                 PERKINS               TERM                  SERVER
+
+  Obs                 empid  store     effdate                 first                  last               rectype              position
+    1  Z294605                   1  11/05/2003

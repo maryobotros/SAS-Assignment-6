@@ -1,0 +1,13 @@
+{
+  "_captured_at": "2026-08-20T10:40:00Z",
+  "_captured_run_id": "r_e495623686fb45898881a70d90a61dfe",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote transactions (15 rows, 6 columns).",
+    "NOTE: PROC FREQ statement used."
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "output_contains": ["HIRE", "TERM", "POS"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}
